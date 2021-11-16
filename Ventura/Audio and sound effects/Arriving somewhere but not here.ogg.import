@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Arriving somewhere but not here.ogg-3c266c052c15a6abcc7b0fa8a0f2ee32.oggstr"
+
+[deps]
+
+source_file="res://Audio and sound effects/Arriving somewhere but not here.ogg"
+dest_files=[ "res://.import/Arriving somewhere but not here.ogg-3c266c052c15a6abcc7b0fa8a0f2ee32.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

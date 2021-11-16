@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Character/Charcters/Characters.gd" type="Script" id=1]
+[ext_resource path="res://Dialogues/Dialog.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.8709, 84.0346 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 62, 84.4801 )
+
+[node name="characters" type="KinematicBody2D"]
+position = Vector2( -0.397232, 19.4635 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+collision_mask = 413
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DialogBox" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 64.7027
+margin_top = -89.7643
+margin_right = 724.703
+margin_bottom = 0.235657
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2.20081, -27.0045 )
+scale = Vector2( 0.135507, 0.135507 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.24734, -26.6617 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -0.794434, -26.2162 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

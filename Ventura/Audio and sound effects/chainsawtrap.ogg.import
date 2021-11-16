@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chainsawtrap.ogg-6c38199116acc50cef837458593bd252.oggstr"
+
+[deps]
+
+source_file="res://Audio and sound effects/chainsawtrap.ogg"
+dest_files=[ "res://.import/chainsawtrap.ogg-6c38199116acc50cef837458593bd252.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

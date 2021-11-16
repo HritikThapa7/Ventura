@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/village.ogg-150596dd93aaf39531531d04ef3a34ec.oggstr"
+
+[deps]
+
+source_file="res://Audio and sound effects/village.ogg"
+dest_files=[ "res://.import/village.ogg-150596dd93aaf39531531d04ef3a34ec.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

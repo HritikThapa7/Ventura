@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=2]
+
+[ext_resource path="res://Character/Player/ideal shoot/ideal shoot 2.png" type="Texture" id=1]
+[ext_resource path="res://Character/Player/jump/jumping 2.png" type="Texture" id=2]
+[ext_resource path="res://Character/Player/death/death 1.png" type="Texture" id=3]
+[ext_resource path="res://Character/Player/death/death 2.png" type="Texture" id=4]
+[ext_resource path="res://Character/Player/death/death 3.png" type="Texture" id=5]
+[ext_resource path="res://Character/Player/death/death 4.png" type="Texture" id=6]
+[ext_resource path="res://Character/Player/death/death 5.png" type="Texture" id=7]
+[ext_resource path="res://Character/Player/jump/jumping 3.png" type="Texture" id=8]
+[ext_resource path="res://assets/xy/running/run0.png" type="Texture" id=9]
+[ext_resource path="res://assets/xy/running/run1.png" type="Texture" id=10]
+[ext_resource path="res://assets/xy/running/run2.png" type="Texture" id=11]
+[ext_resource path="res://assets/xy/running/run3.png" type="Texture" id=12]
+[ext_resource path="res://assets/xy/running/run4.png" type="Texture" id=13]
+[ext_resource path="res://assets/xy/running/run5.png" type="Texture" id=14]
+[ext_resource path="res://assets/xy/running/run6.png" type="Texture" id=15]
+[ext_resource path="res://assets/xy/running/run7.png" type="Texture" id=16]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "idle1",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "jump1",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "dead1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "fall1",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "run1",
+"speed": 10.0
+} ]

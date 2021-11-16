@@ -1,0 +1,243 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://stage/xy_2/xy_2_main.gd" type="Script" id=1]
+[ext_resource path="res://assets/xy/layers_xy_2/background_image_project.png" type="Texture" id=2]
+[ext_resource path="res://assets/xy/layers_xy_2/foregorund_image.png" type="Texture" id=3]
+[ext_resource path="res://object/Bullets_HPBar_xy2/Health_0.png" type="Texture" id=4]
+[ext_resource path="res://object/Bullets_HPBar_xy2/Border_0.png" type="Texture" id=5]
+[ext_resource path="res://XY_2_scenes/HPbar.gd" type="Script" id=6]
+[ext_resource path="res://assets/xy/player_xy_A/death 1.png" type="Texture" id=7]
+[ext_resource path="res://XY_2_scenes/Screenshake.gd" type="Script" id=8]
+[ext_resource path="res://XY_2_scenes/Water.tscn" type="PackedScene" id=9]
+[ext_resource path="res://stage/xy_2/Stone_xy_2t.tres" type="TileSet" id=10]
+[ext_resource path="res://static_rotating_trap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://XY_2_scenes/following_friend.tscn" type="PackedScene" id=12]
+[ext_resource path="res://XY_2_scenes/Moving platform.tscn" type="PackedScene" id=13]
+[ext_resource path="res://stage/xy_2/horror_trees_xy_2.tres" type="TileSet" id=14]
+[ext_resource path="res://stage/xy_2/horror_spikes.tres" type="TileSet" id=15]
+[ext_resource path="res://stage/xy_2/StonePlatfrom_xy_2.tres" type="TileSet" id=16]
+[ext_resource path="res://stage/xy_2/WaterII_xy_2.tscn" type="PackedScene" id=17]
+[ext_resource path="res://XY_2_tilesets'/grass.tres" type="TileSet" id=18]
+[ext_resource path="res://stage/xy_2/xy_2_main.tres" type="TileSet" id=19]
+[ext_resource path="res://XY_2_scenes/Rotating platform.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Character/Enemy/Enemy_xy_2(simple).tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/xy/Enemy_XY_2/spider 01 walk 2 frames.png" type="Texture" id=22]
+[ext_resource path="res://assets/xy/Enemy_XY_2/spider weird transparent.png" type="Texture" id=23]
+[ext_resource path="res://stage/xy_2/key_xy_2.tscn" type="PackedScene" id=24]
+[ext_resource path="res://stage/xy_2/door_xy_2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Character/Player/Player_xy_2.tscn" type="PackedScene" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "spider",
+"speed": 2.0
+} ]
+
+[node name="xy_2_main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.5, 0.5 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1785, 900 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 4.10107, 4.10107 )
+scale = Vector2( 0.5, 0.62 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2( 1860, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground2/ParallaxLayer2"]
+position = Vector2( 969.718, 439.292 )
+scale = Vector2( 0.525, 0.525 )
+texture = ExtResource( 3 )
+
+[node name="HPbar" type="TextureProgress" parent="ParallaxBackground2"]
+margin_left = 36.9098
+margin_right = 222.91
+margin_bottom = 81.0
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.156863, 0.0196078, 0.0196078, 1 )
+tint_progress = Color( 0.411765, 0.980392, 0.937255, 1 )
+nine_patch_stretch = true
+script = ExtResource( 6 )
+
+[node name="Tween_hp" type="Tween" parent="ParallaxBackground2/HPbar"]
+
+[node name="HP_player" type="Sprite" parent="ParallaxBackground2"]
+position = Vector2( 26, 39.05 )
+scale = Vector2( 0.035, 0.035 )
+texture = ExtResource( 7 )
+
+[node name="Screenshake" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="Screenshake"]
+
+[node name="Water_xy_2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2948.18, 172.738 )
+scale = Vector2( 0.5, 4 )
+
+[node name="Stone_xy_2" type="TileMap" parent="."]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 18 )
+format = 1
+tile_data = PoolIntArray( 2752873, 8, 0, 2752885, 6, 0, 2818432, 4, 0, 2949489, 5, 0 )
+
+[node name="Stone_xy_3" type="TileMap" parent="."]
+modulate = Color( 0.301961, 0.215686, 0.215686, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 64, 22 )
+format = 1
+tile_data = PoolIntArray( 1048635, 8, 0, 1114180, 9, 0 )
+
+[node name="Trap_collection" type="Node2D" parent="."]
+
+[node name="static_rotating_trap" parent="Trap_collection" instance=ExtResource( 11 )]
+position = Vector2( 1533.15, 213.956 )
+
+[node name="static_rotating_trap2" parent="Trap_collection" instance=ExtResource( 11 )]
+position = Vector2( 4427.07, 734.256 )
+
+[node name="static_rotating_trap3" parent="Trap_collection" instance=ExtResource( 11 )]
+position = Vector2( 7647.8, 180.059 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="static_rotating_trap5" parent="Trap_collection" instance=ExtResource( 11 )]
+position = Vector2( 7489.41, 151.775 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="static_rotating_trap6" parent="Trap_collection" instance=ExtResource( 11 )]
+modulate = Color( 0.996078, 0.996078, 0.996078, 1 )
+position = Vector2( 7808.36, 804.272 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="static_rotating_trap4" parent="Trap_collection" instance=ExtResource( 11 )]
+position = Vector2( 6555.72, 756.212 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="following_friend" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2378.93, 245.22 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Moving platform" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2571.14, 764.284 )
+scale = Vector2( 4, 3 )
+move_to = Vector2( 250, 0 )
+
+[node name="Moving platform3" parent="." instance=ExtResource( 13 )]
+modulate = Color( 0.388235, 0.262745, 0.262745, 1 )
+position = Vector2( 6895.81, 266.48 )
+scale = Vector2( 4, 3 )
+move_to = Vector2( -25, 100 )
+
+[node name="Horror_trees_xy_2" type="TileMap" parent="."]
+scale = Vector2( 1.5, 1.5 )
+tile_set = ExtResource( 14 )
+cell_size = Vector2( 35, 35 )
+format = 1
+tile_data = PoolIntArray( 786518, 0, 0, 786520, 4, 0, 786648, 0, 0 )
+
+[node name="Horror_trees_xy_3" type="TileMap" parent="."]
+modulate = Color( 0.309804, 0.254902, 0.254902, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 14 )
+cell_size = Vector2( 35, 35 )
+format = 1
+tile_data = PoolIntArray( 393329, 1, 0, 458866, 6, 0, 524392, 0, 0, 524394, 4, 0, 524419, 0, 0 )
+
+[node name="horror_spikes" type="TileMap" parent="."]
+modulate = Color( 0.494118, 0.2, 0.2, 1 )
+scale = Vector2( 0.3, 0.3 )
+tile_set = ExtResource( 15 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 5440477, 2, 0, 5440506, 2, 0, 5571410, 1, 0, 5571501, 1, 0, 5571502, 1, 0, 5571514, 1, 0, 5571526, 1, 0, 5571538, 1, 0, 5571569, 0, 0, 5571570, 0, 0, 5571587, 0, 0, 5637043, 1, 0, 5637044, 1, 0, 5637049, 1, 0, 5637055, 1, 0, 5637056, 1, 0, 5637061, 1, 0, 5637062, 1, 0, 5637067, 1, 0, 5637068, 1, 0, 5637073, 1, 0, 5637079, 1, 0, 5637080, 1, 0, 5637085, 1, 0, 5637090, 1, 0, 5637091, 1, 0, 5637094, 1, 0, 5637097, 1, 0, 5637100, 1, 0, 5637103, 1, 0, 5637118, 1, 0 )
+
+[node name="StonePlatform_xy_2" type="TileMap" parent="."]
+tile_set = ExtResource( 16 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 403, 2, 0, 405, 2, 0, 406, 2, 0, 407, 2, 0, 65939, 2, 0, 65940, 2, 0, 65941, 2, 0, 65942, 2, 0, 65944, 2, 0, 131475, 2, 0, 131477, 2, 0, 131478, 2, 0, 131480, 2, 0, 197011, 2, 0, 197013, 2, 0, 197014, 2, 0, 197016, 2, 0, 262547, 2, 0, 262549, 2, 0, 262550, 2, 0, 262552, 2, 0, 328083, 2, 0, 328085, 2, 0, 328086, 2, 0, 328088, 2, 0, 393619, 2, 0, 393621, 2, 0, 393622, 2, 0, 393624, 2, 0, 459155, 2, 0, 459157, 2, 0, 459158, 2, 0, 459160, 2, 0, 524691, 2, 0, 524693, 2, 0, 524694, 2, 0, 524696, 2, 0, 590227, 2, 0, 590229, 2, 0, 590230, 2, 0, 590232, 2, 0, 655763, 2, 0, 655765, 2, 0, 655766, 2, 0, 655768, 2, 0, 721299, 2, 0, 721301, 2, 0, 721302, 2, 0, 721304, 2, 0, 786835, 2, 0, 786837, 2, 0, 786838, 2, 0, 786840, 2, 0, 852371, 2, 0, 852373, 2, 0, 852374, 2, 0, 852375, 2, 0, 852376, 2, 0, 917907, 2, 0, 917909, 2, 0, 917910, 2, 0, 917911, 2, 0, 917912, 2, 0, 983443, 2, 0, 983445, 2, 0, 983447, 2, 0, 983448, 2, 0, 1048979, 2, 0, 1048981, 2, 0, 1048983, 2, 0, 1048984, 2, 0, 1114515, 2, 0, 1114517, 2, 0, 1114519, 2, 0, 1114520, 2, 0, 1180051, 2, 0, 1180053, 2, 0, 1180055, 2, 0, 1180056, 2, 0, 1245587, 2, 0, 1245589, 2, 0, 1245591, 2, 0, 1245592, 2, 0, 1311123, 2, 0, 1311125, 2, 0, 1311127, 2, 0, 1311128, 2, 0, 1376659, 2, 0, 1376661, 2, 0, 1376663, 2, 0, 1376664, 2, 0, 1442195, 2, 0, 1442197, 2, 0, 1442199, 2, 0, 1442200, 2, 0, 1507731, 2, 0, 1507733, 2, 0, 1507735, 2, 0, 1507736, 2, 0, 1573267, 2, 0, 1573269, 2, 0, 1573271, 2, 0, 1573272, 2, 0, 1638803, 2, 0, 1638805, 2, 0, 1638807, 2, 0, 1638808, 2, 0, 1704339, 2, 0, 1704341, 2, 0, 1704343, 2, 0, 1704344, 2, 0, 1769671, 0, 0, 1769687, 0, 0, 1769703, 0, 0, 1769719, 0, 0, 1769735, 0, 0, 1769751, 0, 0, 1769767, 0, 0, 1769815, 0, 0, 1769831, 0, 0, 1769875, 2, 0, 1769877, 2, 0, 1769879, 2, 0, 1769880, 2, 0, 1835008, 0, 0, 1835024, 0, 0, 1835040, 0, 0, 1835056, 0, 0, 1835072, 0, 0, 1835120, 0, 0, 1835136, 0, 0, 1835152, 0, 0, 1835168, 0, 0, 1835207, 1, 0, 1835223, 1, 0, 1835239, 1, 0, 1835254, 1, 0, 1835255, 1, 0, 1835271, 1, 0, 1835287, 0, 0, 1835303, 0, 0, 1835351, 1, 0, 1835367, 1, 0, 1835411, 2, 0, 1835413, 2, 0, 1835414, 2, 0, 1835415, 2, 0, 1835416, 2, 0, 1900544, 1, 0, 1900559, 1, 0, 1900573, 1, 0, 1900589, 1, 0, 1900604, 1, 0, 1900608, 1, 0, 1900656, 1, 0, 1900671, 1, 0, 1900687, 1, 0, 1900703, 1, 0, 1900743, 1, 0, 1900759, 1, 0, 1900775, 1, 0, 1900790, 1, 0, 1900806, 1, 0, 1900822, 1, 0, 1900837, 1, 0, 1900887, 0, 0, 1900903, 0, 0, 1900947, 2, 0, 1900950, 2, 0, 1900951, 2, 0, 1900952, 2, 0, 1966080, 1, 0, 1966095, 1, 0, 1966110, 1, 0, 1966125, 1, 0, 1966140, 1, 0, 1966144, 1, 0, 1966192, 1, 0, 1966207, 1, 0, 1966223, 1, 0, 1966239, 1, 0, 1966240, 1, 0, 1966279, 0, 0, 1966295, 0, 0, 1966311, 0, 0, 1966327, 0, 0, 1966343, 0, 0, 1966359, 0, 0, 1966375, 0, 0, 1966423, 1, 0, 1966439, 1, 0, 1966483, 2, 0, 1966484, 2, 0, 1966485, 2, 0, 1966486, 2, 0, 1966487, 2, 0, 1966488, 2, 0, 2031616, 0, 0, 2031632, 0, 0, 2031648, 0, 0, 2031664, 0, 0, 2031680, 0, 0, 2031728, 1, 0, 2031744, 0, 0, 2031760, 0, 0, 2031776, 0, 0, 2031815, 1, 0, 2031830, 1, 0, 2031845, 1, 0, 2031861, 1, 0, 2031877, 1, 0, 2031959, 1, 0, 2031975, 1, 0, 2032020, 2, 0, 2032021, 2, 0, 2032022, 2, 0, 2097152, 1, 0, 2097168, 1, 0, 2097183, 1, 0, 2097198, 1, 0, 2097213, 1, 0, 2097216, 1, 0, 2097264, 0, 0, 2097280, 1, 0, 2097295, 1, 0, 2097310, 1, 0, 2097312, 1, 0, 2097555, 2, 0, 2097556, 2, 0, 2097557, 2, 0, 2097558, 2, 0, 2097560, 2, 0, 2163091, 2, 0, 2163092, 2, 0, 2163093, 2, 0, 2163094, 2, 0, 2163096, 2, 0, 2228627, 2, 0, 2228628, 2, 0, 2228629, 2, 0, 2228630, 2, 0, 2228632, 2, 0, 2294163, 2, 0, 2294164, 2, 0, 2294165, 2, 0, 2294166, 2, 0, 2294168, 2, 0, 2359699, 2, 0, 2359700, 2, 0, 2359701, 2, 0, 2359702, 2, 0, 2359704, 2, 0, 2425235, 2, 0, 2425236, 2, 0, 2425237, 2, 0, 2425238, 2, 0, 2425240, 2, 0, 2490771, 2, 0, 2490772, 2, 0, 2490773, 2, 0, 2490774, 2, 0, 2490776, 2, 0, 2556307, 2, 0, 2556308, 2, 0, 2556309, 2, 0, 2556310, 2, 0, 2556311, 2, 0, 2556312, 2, 0, 2621843, 2, 0, 2621844, 2, 0, 2621845, 2, 0, 2621846, 2, 0, 2621847, 2, 0, 2621848, 2, 0, 2687379, 2, 0, 2687380, 2, 0, 2687381, 2, 0, 2687382, 2, 0, 2687383, 2, 0, 2687384, 2, 0, 2752915, 2, 0, 2752916, 2, 0, 2752917, 2, 0, 2752918, 2, 0, 2752919, 2, 0, 2752920, 2, 0, 2818451, 2, 0, 2818452, 2, 0, 2818453, 2, 0, 2818454, 2, 0, 2818455, 2, 0, 2818456, 2, 0, 2883987, 2, 0, 2883988, 2, 0, 2883989, 2, 0, 2883990, 2, 0, 2883991, 2, 0, 2883992, 2, 0, 2949523, 2, 0, 2949524, 2, 0, 2949525, 2, 0, 2949526, 2, 0, 2949527, 2, 0, 2949528, 2, 0, 3015059, 2, 0, 3015060, 2, 0, 3015061, 2, 0, 3015062, 2, 0, 3015063, 2, 0, 3015064, 2, 0, 3080595, 2, 0, 3080596, 2, 0, 3080597, 2, 0, 3080598, 2, 0, 3080599, 2, 0, 3080600, 2, 0, 3146131, 2, 0, 3146132, 2, 0, 3146133, 2, 0, 3146134, 2, 0, 3146135, 2, 0, 3146136, 2, 0, 3211667, 2, 0, 3211668, 2, 0, 3211669, 2, 0, 3211670, 2, 0, 3211671, 2, 0, 3211672, 2, 0, 3277203, 2, 0, 3277204, 2, 0, 3277205, 2, 0, 3277206, 2, 0, 3277207, 2, 0, 3277208, 2, 0, 3342739, 2, 0, 3342740, 2, 0, 3342741, 2, 0, 3342742, 2, 0, 3342743, 2, 0, 3342744, 2, 0, 3408275, 2, 0, 3408276, 2, 0, 3408277, 2, 0, 3408278, 2, 0, 3408279, 2, 0, 3408280, 2, 0, 3473811, 2, 0, 3473812, 2, 0, 3473813, 2, 0, 3473814, 2, 0, 3473815, 2, 0, 3473816, 2, 0, 3539347, 2, 0, 3539348, 2, 0, 3539349, 2, 0, 3539350, 2, 0, 3539351, 2, 0, 3539352, 2, 0, 3604883, 2, 0, 3604884, 2, 0, 3604885, 2, 0, 3604887, 2, 0, 3604888, 2, 0, 3670419, 2, 0, 3670420, 2, 0, 3670421, 2, 0, 3670423, 2, 0, 3670424, 2, 0, 3735955, 2, 0, 3735957, 2, 0, 3735959, 2, 0, 3735960, 2, 0, 3801491, 2, 0, 3801493, 2, 0, 3801495, 2, 0, 3801496, 2, 0, 3867027, 2, 0, 3867029, 2, 0, 3867031, 2, 0, 3867032, 2, 0, 3932563, 2, 0, 3932567, 2, 0, 3932568, 2, 0, 3998099, 2, 0, 3998100, 2, 0, 3998101, 2, 0, 3998102, 2, 0, 3998103, 2, 0, 3998104, 2, 0 )
+
+[node name="Water_anim_II4" parent="." instance=ExtResource( 17 )]
+position = Vector2( 10467.2, 862.556 )
+
+[node name="Water_anim_II3" parent="." instance=ExtResource( 17 )]
+position = Vector2( 10467.2, 935.227 )
+
+[node name="grass_xy_2" type="TileMap" parent="."]
+tile_set = ExtResource( 18 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 786726, 1, 0, 786728, 3, 0, 786754, 1, 0, 786756, 3, 0, 917799, 1, 0, 917801, 2, 0, 917813, 2, 0, 917825, 3, 0, 1048902, 1, 0, 1048904, 4, 0, 1048906, 5, 0, 1048908, 3, 0, 1179984, 1, 0, 1179986, 3, 0, 1310850, 1, 0, 1310852, 4, 0, 1310854, 3, 0, 1311062, 1, 0, 1311064, 4, 0, 1311066, 5, 0, 1311068, 3, 0, 1376462, 1, 0, 1376464, 3, 0, 1507449, 1, 0, 1507451, 4, 0, 1507453, 5, 0, 1507455, 3, 0, 1573059, 1, 0, 1573060, 4, 0, 1573062, 5, 0, 1573064, 4, 0, 1573066, 3, 0, 1704278, 1, 0, 1704280, 2, 0, 1704292, 2, 0, 1704304, 2, 0, 1704311, 2, 0, 1704323, 6, 0, 1704325, 2, 0, 1704337, 4, 0, 1769472, 1, 0, 1769474, 2, 0, 1769486, 2, 0, 1769498, 2, 0, 1769510, 2, 0, 1769522, 2, 0, 1769534, 2, 0, 1769539, 2, 0, 1769551, 3, 0, 1769583, 1, 0, 1769585, 2, 0, 1769587, 2, 0, 1769599, 2, 0, 1769611, 2, 0, 1769623, 2, 0, 1769635, 2, 0, 1769647, 3, 0 )
+
+[node name="Plants_xy_2" type="TileMap" parent="."]
+modulate = Color( 0.278431, 0.196078, 0.196078, 1 )
+tile_set = ExtResource( 19 )
+cell_size = Vector2( 30, 30 )
+format = 1
+tile_data = PoolIntArray( 327912, 17, 0, 327915, 5, 0, 327917, 18, 0, 327919, 14, 0, 721241, 18, 0, 786750, 10, 0, 852287, 11, 0, 852304, 12, 0, 852306, 17, 0, 917828, 16, 0, 917831, 16, 0, 917834, 15, 0, 983419, 8, 0, 983421, 8, 0, 1048953, 8, 0, 1048954, 8, 0, 1048955, 8, 0, 1048956, 8, 0, 1048957, 8, 0, 1048958, 8, 0, 1048959, 8, 0, 1114487, 8, 0, 1114488, 8, 0, 1114489, 8, 0, 1114490, 8, 0, 1114491, 8, 0, 1114492, 8, 0, 1114493, 8, 0, 1114495, 8, 0, 1114496, 8, 0, 1180007, 6, 0, 1180022, 8, 0, 1180023, 8, 0, 1180025, 8, 0, 1180026, 8, 0, 1180028, 8, 0, 1180029, 8, 0, 1180030, 8, 0, 1180031, 8, 0, 1180032, 8, 0, 1180033, 8, 0, 1245558, 8, 0, 1245559, 8, 0, 1245560, 8, 0, 1245561, 8, 0, 1245562, 8, 0, 1245563, 8, 0, 1245564, 8, 0, 1245565, 8, 0, 1245566, 8, 0, 1245568, 8, 0, 1245569, 8, 0, 1310779, 24, 0, 1310860, 7, 0, 1311085, 7, 0, 1311088, 9, 0, 1311089, 9, 0, 1311090, 9, 0, 1311094, 8, 0, 1311095, 8, 0, 1311096, 8, 0, 1311097, 8, 0, 1311098, 8, 0, 1311099, 8, 0, 1311100, 8, 0, 1311101, 8, 0, 1311103, 8, 0, 1311104, 8, 0, 1311105, 8, 0, 1376319, 22, 0, 1376631, 8, 0, 1376632, 8, 0, 1376633, 8, 0, 1376634, 8, 0, 1376635, 8, 0, 1376636, 8, 0, 1376637, 8, 0, 1376638, 8, 0, 1376639, 8, 0, 1376640, 8, 0, 1441852, 23, 0, 1441854, 22, 0, 1441855, 22, 0, 1442169, 8, 0, 1442170, 8, 0, 1442171, 8, 0, 1442172, 8, 0, 1442174, 8, 0, 1507458, 5, 0, 1507460, 6, 0, 1703950, 10, 0, 1704097, 20, 0, 1769487, 11, 0, 1769502, 12, 0, 1769504, 17, 0, 1769511, 2, 0, 1769594, 8, 0, 1769631, 12, 0, 1835146, 15, 0, 1835148, 15, 0, 1835151, 16, 0, 1835184, 14, 0, 1900716, 26, 0 )
+
+[node name="Plants_xy_3" type="TileMap" parent="."]
+tile_set = ExtResource( 19 )
+cell_size = Vector2( 30, 30 )
+format = 1
+tile_data = PoolIntArray( 721241, 18, 0, 786750, 10, 0, 852287, 11, 0, 852304, 12, 0, 852306, 17, 0, 917828, 16, 0, 917831, 16, 0, 917834, 15, 0, 983419, 8, 0, 983421, 8, 0, 1048953, 8, 0, 1048954, 8, 0, 1048955, 8, 0, 1048956, 8, 0, 1048957, 8, 0, 1048958, 8, 0, 1048959, 8, 0, 1114487, 8, 0, 1114488, 8, 0, 1114489, 8, 0, 1114490, 8, 0, 1114491, 8, 0, 1114492, 8, 0, 1114493, 8, 0, 1114495, 8, 0, 1114496, 8, 0, 1180007, 6, 0, 1180022, 8, 0, 1180023, 8, 0, 1180025, 8, 0, 1180026, 8, 0, 1180028, 8, 0, 1180029, 8, 0, 1180030, 8, 0, 1180031, 8, 0, 1180032, 8, 0, 1180033, 8, 0, 1245558, 8, 0, 1245559, 8, 0, 1245560, 8, 0, 1245561, 8, 0, 1245562, 8, 0, 1245563, 8, 0, 1245564, 8, 0, 1245565, 8, 0, 1245566, 8, 0, 1245568, 8, 0, 1245569, 8, 0, 1310779, 24, 0, 1310860, 7, 0, 1311085, 7, 0, 1311088, 9, 0, 1311089, 9, 0, 1311090, 9, 0, 1311094, 8, 0, 1311095, 8, 0, 1311096, 8, 0, 1311097, 8, 0, 1311098, 8, 0, 1311099, 8, 0, 1311100, 8, 0, 1311101, 8, 0, 1311103, 8, 0, 1311104, 8, 0, 1311105, 8, 0, 1376319, 22, 0, 1376631, 8, 0, 1376632, 8, 0, 1376633, 8, 0, 1376634, 8, 0, 1376635, 8, 0, 1376636, 8, 0, 1376637, 8, 0, 1376638, 8, 0, 1376639, 8, 0, 1376640, 8, 0, 1441852, 23, 0, 1441854, 22, 0, 1441855, 22, 0, 1442169, 8, 0, 1442170, 8, 0, 1442171, 8, 0, 1442172, 8, 0, 1442174, 8, 0, 1507458, 5, 0, 1507460, 6, 0, 1703950, 10, 0, 1704097, 20, 0, 1769487, 11, 0, 1769502, 12, 0, 1769504, 17, 0, 1769511, 2, 0, 1769594, 8, 0, 1769631, 12, 0, 1835146, 15, 0, 1835148, 15, 0, 1835151, 16, 0, 1835184, 14, 0, 1900716, 26, 0 )
+
+[node name="Moving platform2" parent="." instance=ExtResource( 13 )]
+modulate = Color( 0.439216, 0.329412, 0.329412, 1 )
+position = Vector2( 9287.03, 470.142 )
+scale = Vector2( 4, 3 )
+move_to = Vector2( 0, 100 )
+
+[node name="Rotating_platform" parent="." instance=ExtResource( 20 )]
+position = Vector2( 6015.15, 822.693 )
+
+[node name="Water_anim_II" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3072.22, 869.977 )
+
+[node name="Water_anim_II2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3072.22, 958.066 )
+
+[node name="enemy2" parent="." instance=ExtResource( 21 )]
+position = Vector2( 7110.92, 851.907 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="enemy3" parent="." instance=ExtResource( 21 )]
+position = Vector2( 9877.5, 397.199 )
+scale = Vector2( 0.7, 0.7 )
+hp = 5
+
+[node name="Spider" type="AnimatedSprite" parent="."]
+position = Vector2( 7484.65, 703.864 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 1 )
+animation = "spider"
+playing = true
+
+[node name="key_xy_2" parent="." instance=ExtResource( 24 )]
+modulate = Color( 0.521569, 0.470588, 0.470588, 1 )
+position = Vector2( 7102.28, 181.019 )
+
+[node name="door_xy_2" parent="." instance=ExtResource( 25 )]
+position = Vector2( 12414.5, 864.377 )
+
+[node name="player" parent="." instance=ExtResource( 26 )]
+position = Vector2( 6661.22, 503.005 )
+scale = Vector2( 1.25, 1.25 )
+[connection signal="tween_completed" from="Screenshake/Tween" to="Screenshake" method="_on_Tween_tween_completed"]
+[connection signal="key_found" from="key_xy_2" to="." method="_on_key_xy_2_key_found"]
+[connection signal="in_door_area" from="door_xy_2" to="." method="_on_door_xy_2_in_door_area"]

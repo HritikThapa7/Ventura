@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://object/Box_xz/PhysicBox.gd" type="Script" id=1]
+[ext_resource path="res://assets/Traps/empty-wooden-crate-removebg-preview.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50.3276, 49.6902 )
+
+[node name="PhysicBox" type="KinematicBody2D"]
+collision_layer = 32
+collision_mask = 111
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.72549, 0.67451, 0.67451, 1 )
+position = Vector2( 9.65595e-06, 7.02468 )
+scale = Vector2( 0.250208, 0.327791 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

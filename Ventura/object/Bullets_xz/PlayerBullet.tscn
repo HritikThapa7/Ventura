@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://object/Bullets_xz/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://object/Bullets_xz/PlayerBullet.gd" type="Script" id=2]
+[ext_resource path="res://assets/Unique_Projectiles_Volume_1/Circle07.png" type="Texture" id=3]
+[ext_resource path="res://assets/Unique_Projectiles_Volume_1/Flame01.PNG" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.592593, 1 )
+colors = PoolColorArray( 0.337402, 0.00494242, 0, 1, 0.672363, 0.449679, 0.260015, 1, 0.759277, 0.646204, 0.0741482, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 99.31
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.03
+color_ramp = SubResource( 2 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 10.9188
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.340741, 1 )
+colors = PoolColorArray( 0.609375, 0.240417, 0.240417, 1, 0.480469, 0.346407, 0.0619354, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+trail_divisor = 3
+emission_shape = 2
+emission_box_extents = Vector3( 10, 10, 0 )
+flag_disable_z = true
+spread = 51.7
+gravity = Vector3( 80, 0, 0 )
+initial_velocity = 9.3
+angular_velocity = 14.9064
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.02
+color_ramp = SubResource( 6 )
+
+[node name="PlayerBullet" index="0" instance=ExtResource( 1 )]
+collision_mask = 69
+script = ExtResource( 2 )
+speed = 750
+damage = 20
+lifetime = 0.5
+
+[node name="Particles2D2" type="Particles2D" parent="." index="0"]
+process_material = SubResource( 3 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="1"]
+visible = false
+position = Vector2( 0.096859, 0.140858 )
+rotation = 3.14159
+region_rect = Rect2( -7.45923, -3.02393, 78.4986, 73.488 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0.135277, 0.135277 )
+shape = SubResource( 4 )
+
+[node name="Particles2D" type="Particles2D" parent="." index="3"]
+position = Vector2( -5.62007, -0.113339 )
+process_material = SubResource( 7 )
+texture = ExtResource( 4 )
+
+[node name="Lifetime" parent="." index="4"]
+wait_time = 0.5
+[connection signal="body_entered" from="." to="." method="_on_PlayerBullet_body_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cold wind.ogg-303ba0d63c6bfe6190e143ca5c6b3636.oggstr"
+
+[deps]
+
+source_file="res://Audio and sound effects/cold wind.ogg"
+dest_files=[ "res://.import/cold wind.ogg-303ba0d63c6bfe6190e143ca5c6b3636.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

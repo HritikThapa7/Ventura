@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Character/Enemy/Enemy_xy_2(simple).gd" type="Script" id=1]
+[ext_resource path="res://assets/xy/Enemy_XY_2/alienGreen_duck.png" type="Texture" id=2]
+[ext_resource path="res://assets/xy/Enemy_XY_2/alienGreen_walk1.png" type="Texture" id=3]
+[ext_resource path="res://assets/xy/Enemy_XY_2/alienGreen_walk2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 42.4587, 66.6145 )
+
+[node name="enemy" type="KinematicBody2D"]
+scale = Vector2( 0.45, 0.45 )
+collision_layer = 2
+collision_mask = 13
+script = ExtResource( 1 )
+
+[node name="enemy_AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.585598, 0 )
+frames = SubResource( 1 )
+animation = "walk"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.06259, 45.7604 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

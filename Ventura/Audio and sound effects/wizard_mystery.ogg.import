@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wizard_mystery.ogg-db80de16f346e2d08500568a1056bd7e.oggstr"
+
+[deps]
+
+source_file="res://Audio and sound effects/wizard_mystery.ogg"
+dest_files=[ "res://.import/wizard_mystery.ogg-db80de16f346e2d08500568a1056bd7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enlargetrap.wav-4332927abbd3505d1875cc554d3fea4f.sample"
+
+[deps]
+
+source_file="res://Audio and sound effects/enlargetrap.wav"
+dest_files=[ "res://.import/enlargetrap.wav-4332927abbd3505d1875cc554d3fea4f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

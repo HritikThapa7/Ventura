@@ -1,0 +1,78 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Character/Enemy/EnemyFollowsU.gd" type="Script" id=1]
+[ext_resource path="res://object/Bullets_xz/EnemyBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Character spriites/Enemy/1.png" type="Texture" id=3]
+[ext_resource path="res://assets/Character spriites/Enemy/2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Character spriites/Enemy/3.png" type="Texture" id=5]
+[ext_resource path="res://assets/Character spriites/Enemy/4.png" type="Texture" id=6]
+[ext_resource path="res://assets/Character spriites/Enemy/5.png" type="Texture" id=7]
+[ext_resource path="res://assets/Character spriites/Enemy/6.png" type="Texture" id=8]
+[ext_resource path="res://assets/Character spriites/Enemy/7.png" type="Texture" id=9]
+[ext_resource path="res://assets/Character spriites/Enemy/8.png" type="Texture" id=10]
+[ext_resource path="res://assets/Character spriites/Enemy/9.png" type="Texture" id=11]
+[ext_resource path="res://assets/Character spriites/Enemy/10.png" type="Texture" id=12]
+[ext_resource path="res://icon.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 18.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 21.9055
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 565.027
+
+[node name="EnemyFollowsU" type="KinematicBody2D"]
+rotation = -0.00237009
+collision_layer = 2
+collision_mask = 129
+script = ExtResource( 1 )
+Bullet = ExtResource( 2 )
+speed = 200
+rotation_speed = 1.0
+gun_cooldown = 0.5
+health = 40
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 6.4105, 1.90196 )
+rotation = -5.47968e-10
+scale = Vector2( 0.159337, 0.159337 )
+frames = SubResource( 1 )
+animation = "walk"
+playing = true
+
+[node name="Enemy" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="firing direction" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 0.131762 )
+rotation = -7.51433e-05
+scale = Vector2( 1, 0.411198 )
+texture = ExtResource( 13 )
+offset = Vector2( 20, 0 )
+
+[node name="Firing" type="Position2D" parent="firing direction"]
+position = Vector2( 55, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.941176, 0.0941176, 0.0941176, 1 )
+self_modulate = Color( 0.929412, 0.0352941, 0.0352941, 1 )
+position = Vector2( 0, 6 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GunTimer" type="Timer" parent="."]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]

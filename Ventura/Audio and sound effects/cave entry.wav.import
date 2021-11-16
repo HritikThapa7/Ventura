@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cave entry.wav-f3f13fd62d09a61e1bb224f31681d318.sample"
+
+[deps]
+
+source_file="res://Audio and sound effects/cave entry.wav"
+dest_files=[ "res://.import/cave entry.wav-f3f13fd62d09a61e1bb224f31681d318.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

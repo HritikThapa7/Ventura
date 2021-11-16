@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://door2.gd" type="Script" id=1]
+[ext_resource path="res://assets/xy/obstracles_xy_A/spike A.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 132.169, 128.089 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 197.466, 183.865 )
+
+[node name="door2" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.44147, 0 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 1.36037 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.341176, 0.788235, 0.113725, 1 )
+self_modulate = Color( 0.623529, 0.901961, 0.0666667, 1 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

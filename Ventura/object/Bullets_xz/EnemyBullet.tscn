@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://object/Bullets_xz/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://object/Bullets_xz/EnemyBullet.gd" type="Script" id=2]
+[ext_resource path="res://assets/Unique_Projectiles_Volume_1/Trail03.PNG" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.31439, 0.0993061, 0.564941, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 44.3
+gravity = Vector3( 98, 0, 0 )
+angular_velocity = 720.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 78.9
+scale = 0.04
+color_ramp = SubResource( 2 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 11.4431
+height = 1.3086
+
+[node name="EnemyBullet" index="0" instance=ExtResource( 1 )]
+position = Vector2( 25.4068, 23.2753 )
+script = ExtResource( 2 )
+speed = 200
+damage = 20
+lifetime = 0.5
+
+[node name="Particles2D" type="Particles2D" parent="." index="0"]
+process_material = SubResource( 3 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( -1.06937, -0.485306 )
+scale = Vector2( 0.213305, 0.213305 )
+region_rect = Rect2( 324.526, 24.2632, 108.421, 95.7895 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 3.30741, 0.23959 )
+rotation = 1.5708
+shape = SubResource( 4 )
+[connection signal="body_entered" from="." to="." method="_on_EnemyBullet_body_entered"]

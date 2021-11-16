@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mythical_Creatures_sound_effects_Part_1(128kbps).ogg-ad112f7122d1e86962a80f61661b10d4.oggstr"
+
+[deps]
+
+source_file="res://Audio and sound effects/Mythical_Creatures_sound_effects_Part_1(128kbps).ogg"
+dest_files=[ "res://.import/Mythical_Creatures_sound_effects_Part_1(128kbps).ogg-ad112f7122d1e86962a80f61661b10d4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

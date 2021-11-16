@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hitimapct.wav-f1d081b4c672c92a172a1a29a4920115.sample"
+
+[deps]
+
+source_file="res://Audio and sound effects/hitimapct.wav"
+dest_files=[ "res://.import/hitimapct.wav-f1d081b4c672c92a172a1a29a4920115.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

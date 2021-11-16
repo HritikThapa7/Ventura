@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Character/Enemy/enemy_xy_A1.gd" type="Script" id=1]
+[ext_resource path="res://assets/xy/Enemy_xy_A/51kIEXI3qsL._SL1100_.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 12.6569
+height = 2.59155
+
+[node name="enemy" type="KinematicBody2D"]
+position = Vector2( -0.353559, -8.70228e-06 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.7574, -5.8388 )
+scale = Vector2( 0.0408741, 0.0408741 )
+frames = SubResource( 1 )
+animation = "dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.696701, -4.48529 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.14
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://object/Box_xz/Door.gd" type="Script" id=1]
+[ext_resource path="res://assets/Traps/276-2769160_awesome-a-picture-of-a-vertical-line-black.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.3317, 161.073 )
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 135
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.588235, 0.101961, 0.654902, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
