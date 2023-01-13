@@ -8,3 +8,4 @@ platform video game, incorporating a physics system that governs environmental o
 How to get started?
 Install the latest Godot engine depending on the architecture of your computer and implement the objects and functions present in this repo.
  
+© Copyright 2021 Hritik Thapa
